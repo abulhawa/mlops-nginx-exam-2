@@ -1,8 +1,4 @@
-.PHONY: run-project test-api start-project stop-project test
-
-run-project:
-	# run project
-	@echo "Grafana UI: http://localhost:3000"
+.PHONY: test-api start-project stop-project test
 
 test-api:
 	curl -X POST "https://localhost/predict" \
@@ -13,6 +9,7 @@ test-api:
 
 start-project:
 	docker compose up -d --build
+	@echo "Grafana UI: http://localhost:3000"
 
 stop-project:
 	docker compose down
