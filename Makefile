@@ -1,3 +1,5 @@
+.PHONY: run-project test-api start-project stop-project test
+
 run-project:
 	# run project
 	@echo "Grafana UI: http://localhost:3000"
@@ -8,3 +10,12 @@ test-api:
      -d '{"sentence": "Oh yeah, that was soooo cool!"}' \
 	 --user admin:admin \
      --cacert ./deployments/nginx/certs/nginx.crt;
+
+start-project:
+	docker compose up -d --build
+
+stop-project:
+	docker compose down
+
+test:
+	bash ./tests/run_tests.sh

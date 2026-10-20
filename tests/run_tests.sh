@@ -43,10 +43,13 @@ response_v2_body=$(curl -s -X POST "https://localhost/predict" \
      --user admin:admin \
      --cacert ./deployments/nginx/certs/nginx.crt)
 
+echo $response_v2_body
+
 if echo "$response_v2_body" | grep -q 'prediction_proba_dict'; then
     print_result 0 "API v2 response contains 'prediction_proba_dict'."
 else
     print_result 1 "API v2 response does not contain 'prediction_proba_dict'."
+    echo $response_v2_body
 fi
 
 # --- Test 3: Authentication Failure ---
