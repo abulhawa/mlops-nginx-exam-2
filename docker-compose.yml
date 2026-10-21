@@ -1,21 +1,21 @@
 services:
   sentiment-api-v1:
-    build: 
+    build:
       dockerfile: src/api/v1/Dockerfile
       context: .
     deploy:
       replicas: 3
     expose:
       - "8000"
-      
+
   sentiment-api-v2:
-    build: 
+    build:
       dockerfile: src/api/v2/Dockerfile
       context: .
     deploy:
       replicas: 1
     expose:
-      - "8000"  
+      - "8000"
 
   nginx:
     build:
@@ -43,8 +43,8 @@ services:
     depends_on:
       - nginx
     environment:
-      SCRAPE_URI: https://nginx/nginx_status
-  
+      SCRAPE_URI: http://nginx:8081/nginx_status
+
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus_server
@@ -63,6 +63,8 @@ services:
       - "3000:3000"
     volumes:
       - grafana_data:/var/lib/grafana
+      - ./deployments/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./deployments/grafana/dashboards:/var/lib/grafana/dashboards:ro
     depends_on:
       - prometheus
     environment:

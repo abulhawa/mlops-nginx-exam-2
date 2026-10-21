@@ -1,3 +1,7 @@
+# Nginx MLOps project
+
+See [README_student.md](README_student.md) for architecture, setup, usage and tests.
+
 ## Instructions pour l'Examen / Exam Instructions
 
 <details>
@@ -76,7 +80,7 @@ graph TD
 Voici l'arborescence de fichiers que vous devez obtenir à la fin :
 
 ```sh
-. 
+.
 ├── Makefile
 ├── README.md
 ├── README_student.md
@@ -210,7 +214,7 @@ graph TD
 Here is the file tree you should aim to have at the end:
 
 ```sh
-. 
+.
 ├── Makefile
 ├── README.md
 ├── README_student.md

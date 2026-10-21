@@ -1,0 +1,76 @@
+{
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "version": 1,
+  "panels": [
+    {
+      "datasource": {
+        "uid": "prometheus",
+        "type": "prometheus"
+      },
+      "targets": [
+        {
+          "expr": "nginx_up",
+          "refId": "A"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "x": 0,
+        "y": 0,
+        "w": 24
+      },
+      "title": "Nginx available",
+      "id": 1,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "uid": "prometheus",
+        "type": "prometheus"
+      },
+      "targets": [
+        {
+          "expr": "nginx_connections_active",
+          "refId": "A"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "x": 0,
+        "y": 8,
+        "w": 24
+      },
+      "title": "Active connections",
+      "id": 2,
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "uid": "prometheus",
+        "type": "prometheus"
+      },
+      "targets": [
+        {
+          "expr": "rate(nginx_http_requests_total[1m])",
+          "refId": "A"
+        }
+      ],
+      "gridPos": {
+        "h": 8,
+        "x": 0,
+        "y": 16,
+        "w": 24
+      },
+      "title": "Requests per second",
+      "id": 3,
+      "type": "timeseries"
+    }
+  ],
+  "title": "Nginx Overview",
+  "refresh": "5s",
+  "uid": "nginx-overview",
+  "schemaVersion": 39
+}
